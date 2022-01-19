@@ -25,4 +25,33 @@ RSpec.describe UsersController, type: :controller do
         let(:invalid_params) { {user: {username: 'Aagam'}}}
     end
 
+	context "with valid params" do
+		it "creates the user" do
+			post :create, params: valid_params
+			expect(User.last.username).to eq("Shawn")
+			expect(User.last.email).to eq("shawn@gmail.com")
+		end
+
+		it "redirects to user's page" do
+			post :create, params: valid_params
+			expect(response).to redirect_to (user_url(User.last.id))
+		end
+	end
+
+	context "with invalid params" do
+		before :each do
+			post :create, params: invalid_params
+		end
+
+		it "renders new template" do
+			expect(response).to render_template(:new)
+		end
+
+		it "adds errors to flash" do
+			expect(flash[:errors]).to be_present
+		end
+
+	end
+
+
 end
