@@ -3,12 +3,11 @@ FactoryBot.define do
     username {Faker::FunnyName.name}
     email {Faker::Internet.email}
     password {Faker::Cannabis.strain}
-  end
-
+ 
   factory :funny_user do
-	  username {'jim carey'}
-    email {'jim@gmail.com'}
+	username {'jim carey'}
+    # email {'jim@gmail.com'}
     password {'password'}
 	end
-  
+end
 end
