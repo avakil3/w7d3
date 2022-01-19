@@ -16,16 +16,16 @@ RSpec.describe User, type: :model do
   end
 
   describe "check password?" do
-    let!(:user) {create(:user)}
+    let!(:user) {create(:funny_user)}
     context "with a valid password" do
       it "should return true" do
-        expect user.check_password?('password').to_be true
+        expect(user.check_password?('password')).to be true
       end
     end
 
     context "with invalid password" do
       it "should return false" do
-        expect user.check_password?('password123').to_be false
+        expect(user.check_password?('password123')).to be false
       end
     end
 
@@ -33,8 +33,8 @@ RSpec.describe User, type: :model do
 
 	describe 'password encryption' do
 		it 'does not save password to the database' do
-			create(:funny_user)
-			user = User.find_by(username: "jim carey")
+			FactoryBot.create(:funny_user)
+			user = User.find_by(username: 'jim carey')
 			expect(user.password).not_to eq('password')	
 		end
 

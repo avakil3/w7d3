@@ -6,7 +6,9 @@ FactoryBot.define do
   end
 
   factory :funny_user do
-	username {'jim carey'}
+	  username {'jim carey'}
+    email {'jim@gmail.com'}
+    password {'password'}
 	end
   
 end
