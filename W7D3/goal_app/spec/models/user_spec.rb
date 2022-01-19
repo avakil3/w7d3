@@ -29,7 +29,9 @@ RSpec.describe User, type: :model do
       end
     end
 
-	describe 'password encryption'
+  end
+
+	describe 'password encryption' do
 		it 'does not save password to the database' do
 			create(:funny_user)
 			user = User.find_by(username: "jim carey")
@@ -41,10 +43,5 @@ RSpec.describe User, type: :model do
 			build(:user,password: 'abc123')
 		end
 		
-
-
 	end
-
-
-  end
 end
