@@ -28,5 +28,23 @@ RSpec.describe User, type: :model do
         expect user.check_password?('password123').to_be false
       end
     end
+
+	describe 'password encryption'
+		it 'does not save password to the database' do
+			create(:funny_user)
+			user = User.find_by(username: "jim carey")
+			expect(user.password).not_to eq('password')	
+		end
+
+		it 'encrypts password' do
+			expect(BCrypt::Password).to receive(:create).with('abc123')
+			build(:user,password: 'abc123')
+		end
+		
+
+
+	end
+
+
   end
 end

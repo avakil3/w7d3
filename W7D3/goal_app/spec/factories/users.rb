@@ -4,4 +4,9 @@ FactoryBot.define do
     email {Faker::Internet.email}
     password {Faker::Cannabis.strain}
   end
+
+  factory :funny_user do
+	username {'jim carey'}
+	end
+  
 end
